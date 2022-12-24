@@ -26,4 +26,5 @@ jobs:
           existing_bucket_name: elasticbeanstalk-us-east-1-917396685926
           region: us-east-1
           version_label: ${{ github.SHA }}
+          use_existing_version_if_available: true
           deployment_package: fibo-calculator-deploy.zip
