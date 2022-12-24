@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: docker build -t saulomarchi/docker-frontend-web-test -f Dockerfile.dev .
-      - run: docker run -e CI=true saulomarchi/docker-frontend-web-test npm test
+      - run: docker build -t saulomarchi/fibo-calculator-client-test -f Dockerfile.dev .
+      - run: docker run -e CI=true saulomarchi/fibo-calculator-client-test npm test
 

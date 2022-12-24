@@ -10,20 +10,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: docker build -t saulomarchi/docker-frontend-web-test -f Dockerfile.dev .
-      - run: docker run -e CI=true saulomarchi/docker-frontend-web-test npm test
+      - run: docker build -t saulomarchi/fibo-calculator-client-test -f ./client/Dockerfile.dev .
+      - run: docker run -e CI=true saulomarchi/fibo-calculator-client-test npm run test
  
       - name: Generate deployment package
-        run: zip -r deploy.zip . -x '*.git*'
+        run: zip -r fibo-calculator-deploy.zip . -x '*.git*'
  
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: docker-frontend-web
-          environment_name: Dockerfrontendweb-env
+          application_name: fibo-calculator
+          environment_name: Fibocalculator-env
           existing_bucket_name: elasticbeanstalk-us-east-1-917396685926
           region: us-east-1
           version_label: ${{ github.SHA }}
-          deployment_package: deploy.zip
+          deployment_package: fibo-calculator-deploy.zip
