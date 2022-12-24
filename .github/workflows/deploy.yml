@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: docker build -t saulomarchi/fibo-calculator-client-test -f ./client/Dockerfile.dev .
+      - run: docker build -t saulomarchi/fibo-calculator-client-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true saulomarchi/fibo-calculator-client-test npm run test
  
       - name: Generate deployment package
