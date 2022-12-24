@@ -15,3 +15,9 @@ build-worker-dev:
 
 start-worker-dev:
 	cd worker && docker run -p 3000:3000 fibo-calculator-worker
+
+build-dev:
+	docker-compose -f docker-compose-dev.yml up --build
+
+start-dev:
+	docker-compose -f docker-compose-dev.yml up
